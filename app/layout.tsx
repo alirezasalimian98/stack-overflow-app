@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   description:
     "a place for developers to find the answer to their own question and contribute in solving other problems !",
   icons: {
-    icon: "/public/assets/images/site-logo.svg",
+    icon: "/assets/images/site-logo.svg",
   },
 };
 
@@ -55,9 +55,7 @@ export default function RootLayout({
             <SignedOut>
               <SignInButton />
             </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
+
             {children}
           </body>
         </html>
