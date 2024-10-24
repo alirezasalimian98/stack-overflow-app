@@ -13,6 +13,7 @@ import {
 } from "@clerk/nextjs";
 
 import "./globals.css";
+import { ThemeProvider } from "@/context/ThemeProvider.tsx";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -48,17 +49,19 @@ export default function RootLayout({
         },
       }}
     >
-      <html lang="en">
-        <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-          {children}
-        </body>
-      </html>
+      <ThemeProvider>
+        <html lang="en">
+          <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
+            <SignedOut>
+              <SignInButton />
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+            {children}
+          </body>
+        </html>
+      </ThemeProvider>
     </ClerkProvider>
   );
 }
