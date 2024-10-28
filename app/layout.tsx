@@ -41,25 +41,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider
-      appearance={{
-        elements: {
-          fromButtonPrimary: "primary-gradient",
-          footerActionLink: "primary-text-gradient hover:text-primary-500",
-        },
-      }}
-    >
-      <ThemeProvider>
+    <ThemeProvider>
+      <ClerkProvider
+        appearance={{
+          elements: {
+            fromButtonPrimary: "primary-gradient",
+            footerActionLink: "primary-text-gradient hover:text-primary-500",
+          },
+        }}
+      >
         <html lang="en">
           <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
-            <SignedOut>
-              <SignInButton />
-            </SignedOut>
+            <SignedOut>{/* <SignInButton /> */}</SignedOut>
 
             {children}
           </body>
         </html>
-      </ThemeProvider>
-    </ClerkProvider>
+      </ClerkProvider>
+    </ThemeProvider>
   );
 }

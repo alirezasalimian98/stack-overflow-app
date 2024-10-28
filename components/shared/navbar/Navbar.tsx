@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Theme from "./Theme";
+import MobileNav from "./MobileNav";
+import GlobalSearch from "../search/GlobalSearch";
 
 const Navbar = () => {
   return (
@@ -18,9 +20,10 @@ const Navbar = () => {
           Dev<span className="text-primary-500">OverFlow</span>
         </p>
       </Link>
-      Global search
+      <GlobalSearch />
       <div className="flex-between gap-5">
         <Theme />
+        <MobileNav />
         <SignedIn>
           <UserButton
             afterSwitchSessionUrl="/"
