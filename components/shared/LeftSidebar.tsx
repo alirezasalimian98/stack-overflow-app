@@ -72,8 +72,8 @@ const LeftSidebar = () => {
               <Image
                 src={"assets/icons/account.svg"}
                 alt="account"
-                width={24}
-                height={24}
+                width={20}
+                height={20}
                 className="invert-colors lg:hidden"
               />
               <span className="primary-text-gradient max-lg:hidden ">
@@ -87,13 +87,11 @@ const LeftSidebar = () => {
               <Image
                 src={"assets/icons/sign-up.svg"}
                 alt="sign up"
-                width={24}
-                height={24}
+                width={20}
+                height={20}
                 className="invert-colors lg:hidden"
               />
-              <span className="primary-text-gradient max-lg:hidden ">
-                Sign up
-              </span>
+              <span className="max-lg:hidden ">Sign up</span>
             </Button>
           </Link>
         </div>

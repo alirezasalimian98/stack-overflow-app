@@ -1,11 +1,11 @@
-import type { Config } from "tailwindcss";
-
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   darkMode: ["class"],
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
   theme: {
     container: {
@@ -26,20 +26,7 @@ const config: Config = {
           200: "#0F1117",
           300: "#151821",
           400: "#212734",
-          //#3A3B3C
-          //#0A0A0A
-          //#121212
-          //#15292B
-          //#161618
-          //#181818
-          //#192734
-          //#212121
-          //#212124
-          //#22303C
-          //#242526
-          //#282828
-          //#3A3B3C
-          //#404040
+          500: "#101012",
         },
         light: {
           900: "#FFFFFF",
@@ -57,10 +44,10 @@ const config: Config = {
       },
       boxShadow: {
         "light-100":
-          "0px 12px 20px 0px rgba(184, 184, 184, 0.03), 0px 6px 12px 0px rgba(184,184,184,0.02),0px 2px 4px 0px rgba(184,184,184,0.03)",
-        "light-200": '"10px 10px 20px 0px rgba(218, 213, 213, 0.10)',
+          "0px 12px 20px 0px rgba(184, 184, 184, 0.03), 0px 6px 12px 0px rgba(184, 184, 184, 0.02), 0px 2px 4px 0px rgba(184, 184, 184, 0.03)",
+        "light-200": "10px 10px 20px 0px rgba(218, 213, 213, 0.10)",
         "light-300": "-10px 10px 20px 0px rgba(218, 213, 213, 0.10)",
-        "dark-100": '"0px 2px 10px 0px rgba(46, 52, 56, 0.10)',
+        "dark-100": "0px 2px 10px 0px rgba(46, 52, 56, 0.10)",
         "dark-200": "2px 0px 20px 0px rgba(39, 36, 36, 0.04)",
       },
       backgroundImage: {
@@ -72,12 +59,12 @@ const config: Config = {
       },
       keyframes: {
         "accordion-down": {
-          from: { height: "0" },
+          from: { height: 0 },
           to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
           from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
+          to: { height: 0 },
         },
       },
       animation: {
@@ -88,4 +75,3 @@ const config: Config = {
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 };
-export default config;
