@@ -1,7 +1,8 @@
 import React from "react";
+import { Question } from "@/components/form/Question";
 
 const AskQuestion = () => {
-  return <div>AskQuestion</div>;
+  return <Question />;
 };
 
 export default AskQuestion;
