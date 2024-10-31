@@ -4,19 +4,19 @@ import React from "react";
 import RenderTag from "./RenderTag";
 
 const hotQuestions = [
-  { _id: 1, title: "How do i use expressions as custom server in NEXT js ?" },
-  { _id: 2, title: "How do i use expressions as custom server in NEXT js ?" },
-  { _id: 3, title: "How do i use expressions as custom server in NEXT js ?" },
-  { _id: 4, title: "How do i use expressions as custom server in NEXT js ?" },
-  { _id: 5, title: "How do i use expressions as custom server in NEXT js ?" },
+  { _id: "1", title: "How do i use expressions as custom server in NEXT js ?" },
+  { _id: "2", title: "How do i use expressions as custom server in NEXT js ?" },
+  { _id: "3", title: "How do i use expressions as custom server in NEXT js ?" },
+  { _id: "4", title: "How do i use expressions as custom server in NEXT js ?" },
+  { _id: "5", title: "How do i use expressions as custom server in NEXT js ?" },
 ];
 
 const popularTags = [
-  { _id: 1, name: "javascript", totalQuestions: 5 },
-  { _id: 2, name: "Next js", totalQuestions: 25 },
-  { _id: 3, name: "React", totalQuestions: 15 },
-  { _id: 4, name: "Vue", totalQuestions: 35 },
-  { _id: 5, name: "Python", totalQuestions: 45 },
+  { _id: "1", name: "javascript", totalQuestions: 5 },
+  { _id: "2", name: "Next js", totalQuestions: 25 },
+  { _id: "3", name: "React", totalQuestions: 15 },
+  { _id: "4", name: "Vue", totalQuestions: 35 },
+  { _id: "5", name: "Python", totalQuestions: 45 },
 ];
 
 const RightSidebar = () => {

@@ -1,10 +1,70 @@
+import QuestionCard from "@/components/card/QuestionCard";
 import HomeFilters from "@/components/home/HomeFilters";
 import Filter from "@/components/shared/Filter";
+import NoResult from "@/components/shared/NoResult";
 import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
 import { Button } from "@/components/ui/button";
 import { HomePageFilters } from "@/constants/filters";
 import Link from "next/link";
 import React from "react";
+
+// const questions = [
+//   {
+//     _id: 1,
+//     title: "How to open a link in a new Tab in NextJS?",
+//     tags: [
+//       { _id: 1, name: "css" },
+//       { _id: 2, name: "nextjs" },
+//     ],
+//     author: "John Doe",
+//     upvotes: 10,
+//     answers: 3,
+//     views: 100,
+//     createdAt: "2024-05-09",
+//   },
+//   {
+//     _id: 2,
+//     title: "How to center a div ?",
+//     tags: [
+//       { _id: 1, name: "react" },
+//       { _id: 2, name: "js" },
+//     ],
+//     author: "John Doe",
+//     upvotes: 10,
+//     answers: 3,
+//     views: 100,
+//     createdAt: "2024-05-09",
+//   },
+// ];
+
+const questions = [
+  {
+    _id: "1",
+    title: "How to open a link in a new Tab in NextJS?",
+    tags: [
+      { _id: "1", name: "css" },
+      { _id: "2", name: "nextjs" },
+    ],
+    author: { _id: "1", name: "John Doe", picture: "path/to/picture.jpg" },
+    upvotes: 100000000,
+    answers: [{}],
+    views: 100000000,
+    createdAt: new Date("2024-05-09"),
+  },
+  {
+    _id: "2",
+    title: "How to center a div?",
+    tags: [
+      { _id: "1", name: "react" },
+      { _id: "2", name: "js" },
+    ],
+    author: { _id: "1", name: "John Doe", picture: "path/to/picture.jpg" },
+    upvotes: 10,
+    answers: [{}],
+    views: 10500,
+    createdAt: new Date("2024-05-09"),
+  },
+];
 
 const Home = () => {
   return (
@@ -32,6 +92,33 @@ const Home = () => {
         />
       </div>
       <HomeFilters />
+
+      <div className="mt-10 flex w-full flex-col gap-6">
+        {questions.length > 0 ? (
+          questions.map((question) => (
+            <QuestionCard
+              key={question._id}
+              _id={question._id}
+              title={question.title}
+              tags={question.tags}
+              author={question.author}
+              upvotes={question.upvotes}
+              views={question.views}
+              answers={question.answers}
+              createdAt={question.createdAt}
+            />
+          ))
+        ) : (
+          <NoResult
+            title="There’s no question to show"
+            description="Be the first to break the silence! 🚀 Ask a Question and kickstart the
+        discussion. our query could be the next big thing others learn from. Get
+        involved! 💡"
+            link="/ask-question"
+            linkTitle="Ask a question"
+          />
+        )}
+      </div>
     </>
   );
 };
