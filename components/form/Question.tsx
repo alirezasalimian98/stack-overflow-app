@@ -20,6 +20,7 @@ import { Input } from "@/components/ui/input";
 import { QuestionsSchema } from "@/lib/validation";
 import { Badge } from "../ui/badge";
 import Image from "next/image";
+import { createQuestion } from "@/lib/actions/question.action";
 
 const type: any = "create";
 
@@ -39,11 +40,12 @@ export function Question() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof QuestionsSchema>) {
+  async function onSubmit(values: z.infer<typeof QuestionsSchema>) {
     setIsSubmitting(true);
     try {
+      await createQuestion({});
       // make api call
-      //contain all form 
+      //contain all form
       // navigate to home page
     } catch (error) {
     } finally {
@@ -80,7 +82,7 @@ export function Question() {
   }
 
   function handleTagRemove(tag: string, field: any) {
-    const newTag = field.value.filter((t) => t !== tag);
+    const newTag = field.value.filter((t: any) => t !== tag);
     form.setValue("tags", newTag);
   }
   return (
@@ -128,6 +130,8 @@ export function Question() {
                     editorRef.current = editor;
                   }}
                   initialValue=""
+                  onBlur={field.onBlur}
+                  onEditorChange={(content) => field.onChange(content)}
                   init={{
                     height: 350,
                     menubar: false,
