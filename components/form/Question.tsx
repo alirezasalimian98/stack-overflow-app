@@ -56,7 +56,7 @@ export function Question({ mongoUserId }: Props) {
         content: values.explanation,
         tags: values.tags,
         author: JSON.parse(mongoUserId),
-        path : pathName
+        path: pathName,
       });
       // make api call
       //contain all form
@@ -85,14 +85,15 @@ export function Question({ mongoUserId }: Props) {
             message: "tag must be les than 15 character ! ",
           });
         }
+
         if (!field.value.includes(tagValue as never)) {
           form.setValue("tags", [...field.value, tagValue]);
           tagInput.value = "";
           form.clearErrors("tags");
         }
+      } else {
+        form.trigger();
       }
-    } else {
-      form.trigger();
     }
   }
 
