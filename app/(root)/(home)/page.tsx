@@ -5,68 +5,13 @@ import NoResult from "@/components/shared/NoResult";
 import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
 import { Button } from "@/components/ui/button";
 import { HomePageFilters } from "@/constants/filters";
+import { getQuestion } from "@/lib/actions/question.action";
 import Link from "next/link";
 import React from "react";
 
-// const questions = [
-//   {
-//     _id: 1,
-//     title: "How to open a link in a new Tab in NextJS?",
-//     tags: [
-//       { _id: 1, name: "css" },
-//       { _id: 2, name: "nextjs" },
-//     ],
-//     author: "John Doe",
-//     upvotes: 10,
-//     answers: 3,
-//     views: 100,
-//     createdAt: "2024-05-09",
-//   },
-//   {
-//     _id: 2,
-//     title: "How to center a div ?",
-//     tags: [
-//       { _id: 1, name: "react" },
-//       { _id: 2, name: "js" },
-//     ],
-//     author: "John Doe",
-//     upvotes: 10,
-//     answers: 3,
-//     views: 100,
-//     createdAt: "2024-05-09",
-//   },
-// ];
-
-const questions = [
-  {
-    _id: "1",
-    title: "How to open a link in a new Tab in NextJS?",
-    tags: [
-      { _id: "1", name: "css" },
-      { _id: "2", name: "nextjs" },
-    ],
-    author: { _id: "1", name: "John Doe", picture: "path/to/picture.jpg" },
-    upvotes: 100000000,
-    answers: [{}],
-    views: 100000000,
-    createdAt: new Date("2024-05-09"),
-  },
-  {
-    _id: "2",
-    title: "How to center a div?",
-    tags: [
-      { _id: "1", name: "react" },
-      { _id: "2", name: "js" },
-    ],
-    author: { _id: "1", name: "John Doe", picture: "path/to/picture.jpg" },
-    upvotes: 10,
-    answers: [{}],
-    views: 10500,
-    createdAt: new Date("2024-05-09"),
-  },
-];
-
-const Home = () => {
+const Home = async () => {
+  const result = await getQuestion({});
+  console.log(result.questions);
   return (
     <>
       <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center ">
@@ -94,8 +39,8 @@ const Home = () => {
       <HomeFilters />
 
       <div className="mt-10 flex w-full flex-col gap-6">
-        {questions.length > 0 ? (
-          questions.map((question) => (
+        {result.questions.length > 0 ? (
+          result.questions.map((question) => (
             <QuestionCard
               key={question._id}
               _id={question._id}
