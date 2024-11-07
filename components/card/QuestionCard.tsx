@@ -45,9 +45,9 @@ const QuestionCard = ({
           <RenderTag key={tag._id} _id={tag._id} name={tag.name} />
         ))}
       </div>
-      <div className="flex-between mt-6 w-full flex-wrap gap-3">
+      <div className=" flex-between mt-6 w-full flex-wrap gap-3">
         <Metrics
-          imgUrl="/assets/icons/avatar.svg"
+          imgUrl={author.picture}
           alt="like"
           value={author.name}
           title={` - asked ${getTimeStamp(createdAt)}`}
@@ -55,27 +55,29 @@ const QuestionCard = ({
           isAuthor
           href={`/profile/${author._id}`}
         />
-        <Metrics
-          imgUrl="/assets/icons/like.svg"
-          alt="like"
-          value={formatNumber(upvotes)}
-          title="Votes"
-          textStyle="small-medium text-dark400_light800"
-        />
-        <Metrics
-          imgUrl="/assets/icons/message.svg"
-          alt="message"
-          value={formatNumber(answers.length)}
-          title="answers"
-          textStyle="small-medium text-dark400_light800"
-        />
-        <Metrics
-          imgUrl="/assets/icons/eye.svg"
-          alt="like"
-          value={formatNumber(views)}
-          title="Views"
-          textStyle="small-medium text-dark400_light800"
-        />
+        <div className="flex items-center gap-3 max-sm:flex-wrap max-sm:justify-start">
+          <Metrics
+            imgUrl="/assets/icons/like.svg"
+            alt="like"
+            value={formatNumber(upvotes)}
+            title="Votes"
+            textStyle="small-medium text-dark400_light800"
+          />
+          <Metrics
+            imgUrl="/assets/icons/message.svg"
+            alt="message"
+            value={formatNumber(answers.length)}
+            title="answers"
+            textStyle="small-medium text-dark400_light800"
+          />
+          <Metrics
+            imgUrl="/assets/icons/eye.svg"
+            alt="like"
+            value={formatNumber(views)}
+            title="Views"
+            textStyle="small-medium text-dark400_light800"
+          />
+        </div>
       </div>
     </div>
   );
