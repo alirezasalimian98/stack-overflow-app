@@ -120,6 +120,7 @@ export async function upvoteQuestion(params: QuestionVoteParams) {
     if (!question) {
       throw new Error("Question not found !");
     }
+    revalidatePath(path);
 
     // TODO increase the author 's reputation
   } catch (error) {
@@ -152,6 +153,7 @@ export async function downvoteQuestion(params: QuestionVoteParams) {
     if (!question) {
       throw new Error("Question not found !");
     }
+    revalidatePath(path);
 
     // TODO increase the author 's reputation
   } catch (error) {
