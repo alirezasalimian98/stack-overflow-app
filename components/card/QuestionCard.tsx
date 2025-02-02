@@ -11,7 +11,7 @@ interface QuestionCardType {
   author: { _id: string; name: string; picture: string };
   views: number;
   answers: Array<object>;
-  upvotes: number;
+  upvotes: string[];
   createdAt: Date;
 }
 
@@ -59,7 +59,7 @@ const QuestionCard = ({
           <Metrics
             imgUrl="/assets/icons/like.svg"
             alt="like"
-            value={formatNumber(upvotes)}
+            value={formatNumber(upvotes.length)}
             title="Votes"
             textStyle="small-medium text-dark400_light800"
           />

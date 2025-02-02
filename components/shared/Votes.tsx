@@ -4,6 +4,7 @@ import {
   downvoteQuestion,
   upvoteQuestion,
 } from "@/lib/actions/question.action";
+import { ToggleSaveQuestion } from "@/lib/actions/user.action";
 import { formatNumber } from "@/lib/utils";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
@@ -82,7 +83,13 @@ const Votes = ({
       return;
     }
   }
-  function handleSave() {}
+  async function handleSave() {
+    await ToggleSaveQuestion({
+      userId: JSON.parse(userId),
+      questionId: JSON.parse(itemId),
+      path: pathName,
+    });
+  }
   return (
     <div className="flex gap-5">
       <div className="flex-center gap-2.5">
@@ -136,7 +143,7 @@ const Votes = ({
           width={18}
           alt="star"
           className="cursor-pointer"
-          onClick={() => handleSave}
+          onClick={handleSave}
         />
       )}
     </div>
