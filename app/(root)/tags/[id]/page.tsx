@@ -1,4 +1,4 @@
-import QuestionCard from "@/components/card/QuestionCard";
+import QuestionCard, { QuestionCardType } from "@/components/card/QuestionCard";
 import HomeFilters from "@/components/home/HomeFilters";
 import Filter from "@/components/shared/Filter";
 import NoResult from "@/components/shared/NoResult";
@@ -31,7 +31,7 @@ const page = async ({ params, searchParams }: URLProps) => {
 
       <div className="mt-10 flex w-full flex-col gap-6">
         {result.questions.length > 0 ? (
-          result.questions.map((question: IQuestion) => (
+          result.questions.map((question: QuestionCardType) => (
             <QuestionCard
               key={question._id}
               _id={question._id}
