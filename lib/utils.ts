@@ -40,3 +40,12 @@ export const formatNumber = (num: number): string => {
     return num.toString(); // Less than 1000
   }
 };
+
+export const getJoinedDate = (date: Date): string => {
+  const month = date.toLocaleString("default", { month: "long" });
+
+  const year = date.getFullYear();
+
+  const joinedDate = `${month} ${year}`;
+  return joinedDate;
+};
