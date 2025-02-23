@@ -13,6 +13,7 @@ export interface QuestionCardType {
   answers: Array<object>;
   upvotes: string[];
   createdAt: Date;
+  clerkId?: string | null;
 }
 
 const QuestionCard = ({
@@ -24,6 +25,7 @@ const QuestionCard = ({
   answers,
   upvotes,
   createdAt,
+  clerkId,
 }: QuestionCardType) => {
   return (
     <div className="card-wrapper rounded-[10px] p-9 sm:px-11  ">
