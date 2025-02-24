@@ -87,11 +87,7 @@ const Page = async ({ params, searchParams }: URLProps) => {
               top Posts
             </TabsTrigger>
             <TabsTrigger value="answers" className="tab">
-              <AnswersTab
-                searchParams={searchParams}
-                clerkId={clerkId}
-                userId={userInfo.user._id}
-              />
+              Answers
             </TabsTrigger>
           </TabsList>
           <TabsContent value="top-posts">
@@ -101,7 +97,13 @@ const Page = async ({ params, searchParams }: URLProps) => {
               userId={userInfo.user._id}
             />
           </TabsContent>
-          <TabsContent value="answers">AnswersTab</TabsContent>
+          <TabsContent value="answers" className="flex w-full flex-col gap-6">
+            <AnswersTab
+              searchParams={searchParams}
+              clerkId={clerkId}
+              userId={userInfo.user._id}
+            />
+          </TabsContent>
         </Tabs>
       </div>
     </>
