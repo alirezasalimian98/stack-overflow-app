@@ -1,15 +1,6 @@
 "use client";
 import React from "react";
 
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetClose,
-  SheetTrigger,
-} from "@/components/ui/sheet";
 import Image from "next/image";
 import Link from "next/link";
 import { SignedOut, useAuth } from "@clerk/nextjs";
@@ -19,7 +10,6 @@ import { usePathname } from "next/navigation";
 
 const LeftSidebar = () => {
   const { userId } = useAuth();
-  console.log(userId);
   const pathName = usePathname();
 
   return (

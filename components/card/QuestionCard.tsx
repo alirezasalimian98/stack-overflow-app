@@ -3,12 +3,14 @@ import React from "react";
 import RenderTag from "../shared/RenderTag";
 import Metrics from "../shared/Metrics";
 import { formatNumber, getTimeStamp } from "@/lib/utils";
+import { SignedIn } from "@clerk/nextjs";
+import EditDeleteAction from "../shared/EditDeleteAction";
 
 export interface QuestionCardType {
   _id: string;
   title: string;
   tags: { _id: string; name: string }[];
-  author: { _id: string; name: string; picture: string };
+  author: { _id: string; name: string; picture: string; clerkId: string };
   views: number;
   answers: Array<object>;
   upvotes: string[];
@@ -27,6 +29,7 @@ const QuestionCard = ({
   createdAt,
   clerkId,
 }: QuestionCardType) => {
+  const showActionButtons = clerkId && clerkId === author.clerkId;
   return (
     <div className="card-wrapper rounded-[10px] p-9 sm:px-11 mb-4">
       <div className="flex flex-col-reverse items-start justify-between gap-5 sm:flex-row">
@@ -40,7 +43,11 @@ const QuestionCard = ({
             </h3>
           </Link>
         </div>
-        {/* add edit for when we are signed in */}
+        <SignedIn>
+          {showActionButtons && (
+            <EditDeleteAction type="Question" itemId={JSON.stringify(_id)} />
+          )}
+        </SignedIn>
       </div>
       <div className="mt-3.5 flex flex-wrap gap-2">
         {tags.map((tag) => (
