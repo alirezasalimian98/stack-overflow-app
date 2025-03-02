@@ -2,24 +2,29 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import RenderTag from "./RenderTag";
+import { getHotQuestions } from "@/lib/actions/question.action";
+import { getTopPopularTags } from "@/lib/actions/tag.action";
 
-const hotQuestions = [
-  { _id: "1", title: "How do i use expressions as custom server in NEXT js ?" },
-  { _id: "2", title: "How do i use expressions as custom server in NEXT js ?" },
-  { _id: "3", title: "How do i use expressions as custom server in NEXT js ?" },
-  { _id: "4", title: "How do i use expressions as custom server in NEXT js ?" },
-  { _id: "5", title: "How do i use expressions as custom server in NEXT js ?" },
-];
+// const hotQuestions = [
+//   { _id: "1", title: "How do i use expressions as custom server in NEXT js ?" },
+//   { _id: "2", title: "How do i use expressions as custom server in NEXT js ?" },
+//   { _id: "3", title: "How do i use expressions as custom server in NEXT js ?" },
+//   { _id: "4", title: "How do i use expressions as custom server in NEXT js ?" },
+//   { _id: "5", title: "How do i use expressions as custom server in NEXT js ?" },
+// ];
 
-const popularTags = [
-  { _id: "1", name: "javascript", totalQuestions: 5 },
-  { _id: "2", name: "Next js", totalQuestions: 25 },
-  { _id: "3", name: "React", totalQuestions: 15 },
-  { _id: "4", name: "Vue", totalQuestions: 35 },
-  { _id: "5", name: "Python", totalQuestions: 45 },
-];
+// const popularTags = [
+//   { _id: "1", name: "javascript", totalQuestions: 5 },
+//   { _id: "2", name: "Next js", totalQuestions: 25 },
+//   { _id: "3", name: "React", totalQuestions: 15 },
+//   { _id: "4", name: "Vue", totalQuestions: 35 },
+//   { _id: "5", name: "Python", totalQuestions: 45 },
+// ];
 
-const RightSidebar = () => {
+const RightSidebar = async () => {
+  const hotQuestions = await getHotQuestions();
+  const popularTags = await getTopPopularTags();
+
   return (
     <section
       className="background-light900_dark200
@@ -37,7 +42,7 @@ const RightSidebar = () => {
               <Link
                 className="flex cursor-pointer items-center justify-between gap-7"
                 key={question._id}
-                href={`/questions/${question._id}`}
+                href={`/question/${question._id}`}
               >
                 <p className="body-medium text-dark500_light700">
                   {question.title}
@@ -63,7 +68,7 @@ const RightSidebar = () => {
                 key={tag._id}
                 _id={tag._id}
                 name={tag.name}
-                totalQuestions={tag.totalQuestions}
+                totalQuestions={tag.numberOfQuestions}
                 showCount
               />
             );
