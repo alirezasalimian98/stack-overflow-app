@@ -94,9 +94,18 @@ export async function deleteUser(params: DeleteUserParams) {
 export async function getAllUsers(params: GetAllUsersParams) {
   try {
     connectToDatabase();
-    const { page = 1, pageSize = 20, searchQuery, filter } = params;
+    const { searchQuery } = params;
 
-    const users = await User.find({}).sort({ createdAt: -1 });
+    const query: FilterQuery<typeof User> = {};
+
+    if (searchQuery) {
+      query.$or = [
+        { name: { $regex: new RegExp(searchQuery, "i") } },
+        { username: { $regex: new RegExp(searchQuery, "i") } },
+      ];
+    }
+
+    const users = await User.find(query).sort({ createdAt: -1 });
 
     return { users };
   } catch (error) {
@@ -143,10 +152,10 @@ export async function ToggleSaveQuestion(params: ToggleSaveQuestionParams) {
 export async function GetSavedQuestions(params: GetSavedQuestionsParams) {
   try {
     connectToDatabase();
-    const { clerkId, page = 1, pageSize = 10, searchQuery, filter } = params;
+    const { clerkId, searchQuery } = params;
 
     const query: FilterQuery<typeof Question> = searchQuery
-      ? { title: { $regEx: new RegExp(searchQuery, "i") } }
+      ? { title: { $regex: new RegExp(searchQuery, "i") } }
       : {};
 
     const user = await User.findOne({ clerkId }).populate({
