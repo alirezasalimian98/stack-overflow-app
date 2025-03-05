@@ -13,6 +13,7 @@ import React from "react";
 const Home = async ({ searchParams }: SearchParamsProps) => {
   const result = await getQuestion({
     searchQuery: searchParams.q,
+    filter: searchParams.filter,
   });
 
   return (
