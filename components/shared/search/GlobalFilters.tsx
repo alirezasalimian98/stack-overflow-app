@@ -17,7 +17,7 @@ const GlobalFilters = () => {
     if (active === item) {
       const newUrl = formUrlQuery({
         params: searchParams.toString(),
-        key: "filter",
+        key: "type",
         value: null,
       });
       router.push(newUrl, { scroll: false });
@@ -26,7 +26,7 @@ const GlobalFilters = () => {
 
       const newUrl = formUrlQuery({
         params: searchParams.toString(),
-        key: "filter",
+        key: "type",
         value: item.toLowerCase(),
       });
       router.push(newUrl, { scroll: false });
