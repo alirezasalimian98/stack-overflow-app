@@ -25,7 +25,7 @@ const LeftSidebar = () => {
         {sidebarLinks.map((item) => {
           const isActive =
             pathName === item.route ||
-            (pathName.includes(item.route) && pathName.length > 1);
+            (pathName.includes(item.route) && item.route.length > 1);
 
           if (item.route === "/profile") {
             if (userId) {
