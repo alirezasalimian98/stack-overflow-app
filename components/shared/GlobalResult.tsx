@@ -26,7 +26,7 @@ const GlobalResult = () => {
 
       try {
         const res = await globalSearch({ query: global, type });
-        console.log(JSON.parse(res));
+        // console.log(JSON.parse(res));
         setResult(JSON.parse(res));
       } catch (error) {
         console.error(error);
