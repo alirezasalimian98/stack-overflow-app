@@ -60,7 +60,7 @@ const QuestionCard = ({
           alt="like"
           value={author.name}
           title={` - asked ${getTimeStamp(createdAt)}`}
-          textStyle="small-medium text-dark400_light800"
+          textStyle="small-medium text-dark400_light700"
           isAuthor
           href={`/profile/${author._id}`}
         />

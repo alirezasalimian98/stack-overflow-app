@@ -74,7 +74,7 @@ const LocalSearchbar = ({
         value={search}
         placeholder={placeholder}
         className="paragraph-regular no-focus
-         placeholder background-light800_darkgradient
+         placeholder text-dark400_light700 bg-transparent
           border-none shadow-none outline-none"
       />
     </div>

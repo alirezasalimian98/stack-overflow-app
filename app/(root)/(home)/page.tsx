@@ -6,12 +6,16 @@ import Pagination from "@/components/shared/Pagination";
 import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
 import { Button } from "@/components/ui/button";
 import { HomePageFilters } from "@/constants/filters";
-import { getQuestion } from "@/lib/actions/question.action";
+import {
+  getQuestion,
+  getRecommendedQuestions,
+} from "@/lib/actions/question.action";
 import { SearchParamsProps } from "@/types";
 import Link from "next/link";
 import React from "react";
 
 import type { Metadata } from "next";
+import { auth } from "@clerk/nextjs/server";
 
 export const metadata: Metadata = {
   title: "Home | Dev Overflow",
@@ -19,11 +23,29 @@ export const metadata: Metadata = {
 };
 
 const Home = async ({ searchParams }: SearchParamsProps) => {
-  const result = await getQuestion({
-    searchQuery: searchParams.q,
-    filter: searchParams.filter,
-    page: searchParams.page ? +searchParams.page : 1,
-  });
+  const { userId } = await auth();
+  let result: any;
+
+  if (searchParams.filter === "recommended") {
+    if (userId) {
+      result = await getRecommendedQuestions({
+        userId,
+        searchQuery: searchParams.q,
+        page: searchParams.page ? +searchParams.page : 1,
+      });
+    } else {
+      result = {
+        question: [],
+        isNext: false,
+      };
+    }
+  } else {
+    result = await getQuestion({
+      searchQuery: searchParams.q,
+      filter: searchParams.filter,
+      page: searchParams.page ? +searchParams.page : 1,
+    });
+  }
 
   return (
     <>
@@ -53,7 +75,7 @@ const Home = async ({ searchParams }: SearchParamsProps) => {
 
       <div className="mt-10 flex w-full flex-col gap-6">
         {result.questions.length > 0 ? (
-          result.questions.map((question) => (
+          result.questions.map((question: any) => (
             <QuestionCard
               key={question._id}
               _id={question._id}
