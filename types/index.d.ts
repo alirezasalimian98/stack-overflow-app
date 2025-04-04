@@ -24,14 +24,14 @@ export interface Country {
   };
 }
 export interface ParamsProps {
-  params: { id: string };
+  params: any;
 }
 export interface SearchParamsProps {
-  searchParams: { [key: string]: string | undefined };
+  searchParams: any;
 }
 export interface URLProps {
-  params: { id: string };
-  searchParams: { [key: string]: string | undefined };
+  params: any;
+  searchParams: any;
 }
 export interface BadgeCounts {
   GOLD: number;
