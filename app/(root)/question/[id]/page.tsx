@@ -15,13 +15,15 @@ import React from "react";
 const Page = async ({ params, searchParams }: any) => {
   const result = await GetQuestionById({ questionId: params.id });
 
-  const { userId: clerkId } = await auth();
+  const { userId } = await auth();
 
   let mongoUser;
 
-  if (clerkId) {
-    mongoUser = await getUserById({ clerkId });
+  if (userId) {
+    mongoUser = await getUserById({ userId });
   }
+
+  console.log(mongoUser);
 
   return (
     <>
