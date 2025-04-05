@@ -17,13 +17,11 @@ const Page = async ({ params, searchParams }: any) => {
 
   const { userId: clerkId } = await auth();
 
-  // let mongoUser;
+  let mongoUser;
 
-  // if (clerkId) {
-  //   mongoUser = await getUserById({ clerkId });
-  // }
-
-  const mongoUser = await getUserById({ clerkId });
+  if (clerkId) {
+    mongoUser = await getUserById({ clerkId });
+  }
 
   return (
     <>
